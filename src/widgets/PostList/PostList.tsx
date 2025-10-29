@@ -1,18 +1,11 @@
 import PostCard from '../../entities/post/ui/PostCard';
 
-function PostList() {
+function PostList({ posts }) {
   return (
     <>
-      <PostCard
-        postName="История"
-        postDescrpiption="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, similique!"
-        idPost="1"
-      />
-      <PostCard
-        postName="История 2"
-        postDescrpiption="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, similique!"
-        idPost="2"
-      />
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
     </>
   );
 }

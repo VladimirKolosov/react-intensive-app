@@ -1,10 +1,10 @@
-function PostCard({ postName, postDescrpiption, idPost }) {
+function PostCard({ post }) {
   return (
-    <div>
-      <h1>{postName}</h1>
-      <h4>{idPost}</h4>
-      <p>{postDescrpiption}</p>
-    </div>
+    <>
+      <h1>{post.postTitle}</h1>
+      <h3>{post.id}</h3>
+      <p>{post.text}</p>
+    </>
   );
 }
 
