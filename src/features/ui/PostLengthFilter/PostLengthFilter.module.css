@@ -1,0 +1,13 @@
+.filter_container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.filter_input {
+  height: 40px;
+  border: none;
+  padding: 5px;
+}

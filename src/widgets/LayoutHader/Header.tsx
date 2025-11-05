@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ThemeSwitcher from '../../features/ui/ThemeSwitcher';
+import Modal from '../../shared/ui/Modal/Modal';
+import ThemeSwitcher from '../../features/ui/ThemeSwitcher/ThemeSwitcher';
 import Button from '../../shared/ui/Button/Button';
 import styles from './Header.module.css';
-import Modal from '../../shared/ui/Modal/Modal';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,10 +20,16 @@ function Header() {
         Модальное окно
       </Button>
       <Modal isOpen={isOpen} onClose={closeModal}>
-        <p>
-          Приложение для просмотра постов и комментариев, основанное на
-          публичном API JSONPlaceholder.
-        </p>
+        <Modal.Header>
+          <h2>Информация о проекте</h2>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Приложение для просмотра постов и комментариев, основанное на
+            публичном API JSONPlaceholder
+          </p>
+        </Modal.Body>
+        <Modal.Footer>Закрыть</Modal.Footer>
       </Modal>
       <ThemeSwitcher />
     </header>
