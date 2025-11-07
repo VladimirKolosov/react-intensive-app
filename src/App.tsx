@@ -1,18 +1,16 @@
 import { useState } from 'react';
-import PostList from './widgets/PostList/PostList';
-import Header from './widgets/LayoutHader/Header';
+import { RouterProvider } from 'react-router-dom';
 import ThemeProvider from './shared/lib/theme/ThemeProvider';
-import withLoading from './shared/lib/hoc/withLoading';
-import './App.css';
+import router from './app/providers/router/Router';
 
-const PostListWithLoading = withLoading(PostList);
+import './App.css';
 
 function App() {
   const [theme, setTheme] = useState('dark');
+
   return (
     <ThemeProvider.Provider value={{ theme, setTheme }}>
-      <Header />
-      <PostListWithLoading />
+      <RouterProvider router={router} />
     </ThemeProvider.Provider>
   );
 }
