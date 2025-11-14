@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import Button from '../../shared/ui/Button/Button';
-import ThemeProvider from '../../shared/lib/theme/ThemeProvider';
+import Button from '../../../shared/ui/Button/Button';
+import ThemeProvider from '../../../shared/lib/theme/ThemeProvider';
 
 function ThemeSwitcher() {
   const { theme, setTheme } = useContext(ThemeProvider);

@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
+import styles from './PostCard.module.css';
 function PostCard({ post }) {
   return (
     <>
-      <h1>{post.postTitle}</h1>
-      <h3>{post.id}</h3>
-      <p>{post.text}</p>
+      <h2 className={styles.posts_container}>
+        <Link className={styles.post} to={post.id.toString()}>
+          {post.title}
+        </Link>
+      </h2>
     </>
   );
 }

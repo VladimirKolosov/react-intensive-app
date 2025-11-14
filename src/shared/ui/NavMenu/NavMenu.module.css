@@ -1,0 +1,23 @@
+.nav_menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 100px;
+}
+
+/* .active {
+  color: lightyellow;
+} */
+
+/* className={({ isActive }) => (isActive ? styles.active : undefined)} */
+nav {
+  background-color: darkslategray;
+  height: 70px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 25px;
+  color: lightblue;
+}
