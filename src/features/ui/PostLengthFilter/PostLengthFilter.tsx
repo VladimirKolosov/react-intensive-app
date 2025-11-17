@@ -1,19 +1,23 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectTitleLengthFilter,
+  setTitleLengthFilter,
+  resetFilters,
+} from '../../../entities/filters/model/slice/filterSlice';
 import Button from '../../../shared/ui/Button/Button';
-import filterByLength from '../../lib/LenghtFilter/filterByLength';
+
 import styles from './PostLengthFilter.module.css';
 
-function PostLengthFilter({ posts, setFilteredPosts }) {
-  const [length, setLength] = useState('');
+function PostLengthFilter() {
+  const dispatch = useDispatch();
+  const titleLengthFilter = useSelector(selectTitleLengthFilter);
 
-  const handleClickFilter = () => {
-    const convertedLength = Number(length);
-    const result = filterByLength(posts, convertedLength);
-    setFilteredPosts(result);
+  const handleTitleLengthChange = (event) => {
+    dispatch(setTitleLengthFilter(event.target.value));
   };
 
-  const handleInputChange = (event) => {
-    setLength(event.target.value);
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
   };
 
   return (
@@ -21,14 +25,12 @@ function PostLengthFilter({ posts, setFilteredPosts }) {
       <input
         className={styles.filter_input}
         type="text"
-        value={length}
-        placeholder="Введите длину заголовка"
-        onChange={handleInputChange}
+        value={titleLengthFilter}
+        placeholder="Фильтр по длине заголовка"
+        onChange={handleTitleLengthChange}
       />
-      <Button
-        title="Фильтрация постов по длине заголовка"
-        onClick={handleClickFilter}>
-        Отфильтровать
+      <Button title="Очистить фильтры" onClick={handleResetFilters}>
+        Сброс фильтров
       </Button>
     </div>
   );

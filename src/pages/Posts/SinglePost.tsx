@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
-import usePosts from '../../widgets/PostList/model/hooks/usePosts';
 import CommentList from '../../widgets/ui/CommentList/CommentList';
 import Button from '../../shared/ui/Button/Button';
-const URL = 'https://jsonplaceholder.typicode.com/posts';
+import { useGetPostsQuery } from '../../entities/posts/api/postsApi';
+
 function SinglePost() {
   const params = useParams();
-  const { posts } = usePosts(URL);
+  const { data: posts = [] } = useGetPostsQuery();
 
   if (!posts || posts.length === 0) {
     return <div>Loading...</div>;

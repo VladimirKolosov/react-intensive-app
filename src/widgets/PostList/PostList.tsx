@@ -1,23 +1,25 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { selectTitleLengthFilter } from '../../entities/filters/model/slice/filterSlice';
 import PostCard from '../../entities/post/ui/PostCard';
 import PostLengthFilter from '../../features/ui/PostLengthFilter/PostLengthFilter';
+import filterByLength from '../../features/lib/LenghtFilter/filterByLength';
 
 function PostList({ posts }) {
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  const titleLengthFilter = useSelector(selectTitleLengthFilter);
 
-  useEffect(() => {
-    setFilteredPosts(posts);
-  }, [posts]);
-
-  const memoizedPosts = useMemo(() => {
-    return filteredPosts.map((post) => <PostCard key={post.id} post={post} />);
-  }, [filteredPosts]);
+  const filteredPosts = useMemo(() => {
+    if (!titleLengthFilter) return posts;
+    return filterByLength(posts, Number(titleLengthFilter));
+  }, [posts, titleLengthFilter]);
 
   return (
     <>
       <h1>Список постов</h1>
-      {memoizedPosts}
-      <PostLengthFilter posts={posts} setFilteredPosts={setFilteredPosts} />
+      {filteredPosts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
+      <PostLengthFilter />
     </>
   );
 }
