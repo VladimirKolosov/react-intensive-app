@@ -1,3 +1,4 @@
+import type { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectTitleLengthFilter,
@@ -12,7 +13,7 @@ function PostLengthFilter() {
   const dispatch = useDispatch();
   const titleLengthFilter = useSelector(selectTitleLengthFilter);
 
-  const handleTitleLengthChange = (event) => {
+  const handleTitleLengthChange = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(setTitleLengthFilter(event.target.value));
   };
 

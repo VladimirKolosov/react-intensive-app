@@ -1,7 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import type { Post } from '../type/PostType';
 // import { postsApi } from '../../api/postsApi';
 
-const postsAdapter = createEntityAdapter();
+const postsAdapter = createEntityAdapter<Post>();
 
 export const postsSlice = createSlice({
   name: 'posts',
@@ -18,9 +19,6 @@ export const postsSlice = createSlice({
   //     );
   //   },
 });
-
-// console.log(postsAdapter);
-// console.log(postsSlice);
 
 export const { addPost } = postsSlice.actions;
 
