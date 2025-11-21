@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface FilterState {
+  titleLength: string;
+}
+
+const initialState: FilterState = {
   titleLength: '',
 };
 
@@ -19,6 +23,7 @@ const filterSlice = createSlice({
 
 export const { setTitleLengthFilter, resetFilters } = filterSlice.actions;
 
-export const selectTitleLengthFilter = (state) => state.filter.titleLength;
+export const selectTitleLengthFilter = (state: { filter: FilterState }) =>
+  state.filter.titleLength;
 
 export default filterSlice.reducer;

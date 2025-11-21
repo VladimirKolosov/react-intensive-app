@@ -1,5 +1,9 @@
 import styles from './Button.module.css';
-function Button(props) {
+import type { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+
+type ButtonProps = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>;
+
+function Button(props: ButtonProps) {
   const { children } = props;
   return (
     <button {...props} className={styles.button}>

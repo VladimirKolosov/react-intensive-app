@@ -2,8 +2,9 @@ import { useCallback, useState } from 'react';
 
 import styles from './CommentList.module.css';
 import CommentCard from './CommentCard';
+import type { Comment } from './CommentType';
 
-const comments = [
+const comments: Comment[] = [
   {
     id: 1,
     text: 'First Comment',

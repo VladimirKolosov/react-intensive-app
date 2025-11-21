@@ -12,6 +12,9 @@ function SinglePost() {
   }
 
   const singlePost = posts.find((post) => post.id.toString() === params.id);
+  if (!singlePost) {
+    return <div>Пост не найден</div>;
+  }
 
   return (
     <>
